@@ -4,5 +4,202 @@
   font-family: 'Poppins', sans-serif;
   margin: 0;
   box-sizing: border-box;
+  border:  none;
+  outline: none;
+  text-decoration: none;
+ 
+}
+body{
+    background: #1f293a;
+    color: whitesmoke;
+    max-height: 100vh;
+}
+.wrapper{
+    display: flex;
+}
+nav{
+    width: 95px;
+    height: 100vh;
+    background: #101e32;
+    transition: 0.5s ease-out;
+}
+.navbar{
+    padding: 1rem;
+    position: relative;
+    height: 110vh;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-out;
+    overflow: hidden;
+}
+ nav:hover{
+    width: 200px;
+} 
+.logo{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
 
+}
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    
+}
+.logo span{
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+.navbar a{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: whitesmoke;
+    font-weight: 500;
+    overflow: hidden;
+}
+.navbar i {
+    font-size: 1.2rem;
+    color: whitesmoke;
+    margin: 0 1.8rem 0 0.2rem;
+}
+.navbar a:hover{
+   border-radius: 10px;
+   transition: 0.3s ease-out;
+   background: #0ef;
+}
+.logout{
+    position: absolute;
+    bottom: 100px;
+}
+.logout i{
+    padding-right: 1rem;
+}
+.main{
+    margin-left: 20px;
+}
+.headers{
+   position: sticky;
+}
+.mainheader{
+    font-size: 18px;
+    color: whitesmoke;
+    margin-bottom: 1px;
+    font-weight: 500;
+   
+}
+.balance{
+    font-size: 26px;
+    color: #fff;
+}
+.money{
+    color: #0ef;
+}
+.net{
+    margin-top: 30px;
+    background: orangered;
+    border-radius: 10px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 350px;
+   
+}
+
+.net h3{
+    color: whitesmoke;
+    margin-left: 10px;
+}
+.net p{
+    color: whitesmoke;
+    margin-left: 10px;
+}
+.sections{
+    display: flex;
+    gap: 20px;
+}
+.source{
+    background: #101e32;
+    padding: 30px;
+    border-radius: 10px;
+}
+.source h6{
+    color: whitesmoke;
+}
+#chart_div{
+    background: transparent;
+}
+.row{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+}
+.spendings{
+    background: #101e32;
+    width: 300px;
+    height: 180px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 15px;
+    color: whitesmoke;
+}
+.spen{
+    color: whitesmoke;
+}
+.rowspen{
+    background: #101e32;
+    height: 390px;
+    width: 250px;
+    border-radius: 10%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 15px;
+
+}
+.fasi i{
+    margin-right: 10px;
+    font-size: 30px;
+
+}
+.house{
+    color: orangered;
+}
+.personal{
+    color: greenyellow;
+}
+.car{
+    color:wheat
+}
+.graph-container {
+
+    margin-top: 20px;
+    background-color:  #101e32;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.donut{
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color:  #101e32;
+    color: #fff;
+}
+.goals{
+    background-color: #101e32;
+    width: 400px;
+    height: 150px;
+    padding: 20px;
+    border-radius: 15px;
 }
