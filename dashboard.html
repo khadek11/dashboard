@@ -204,70 +204,120 @@ function drawChart() {
   
    <div class="main">
     <div class="headers">
-    <h1 class="mainheader">Personal Finance Tracker</h1>
-    <h3 class="balance">Available Balance<h3>
-    <p class="money">$ 14,822</p>
-   </div>
-   <div class="sections">
-    <div class="row">
-    <div class="net">
-        <h3>Total Net Worth</h3>
-        <p> $278,378</p>
-    </div>
-
-    <div class="source">
-      <h6>Income Source</h6>
-      <div id="chart_div" style="width: 300px; height: 180px; background:  #101e32;"></div> 
-    </div>
-     </div>
-     <div class="row">
-        <div class="spendings">
-            <h4>spendings</h4>
-           
-            <p> $9,228</p>
-        </div>
-        <div class="spendings">
-            <h4>Income</h4>
-            <p> $24, 050</p>
-            <div id="line_top_x" style="width: 150px; height: 130px; background: transparent;"></div>
-           
-        </div>
-         </div>
-    <div class="row rowspen">
-     <h4 class="spen">Spendings</h4>
-     <div class="fasi">
-      <h5><i class="fas fa-home house"></i>Housing</h5>
-      <p  class="money">$3,456</p>
-     </div>
-     <div class="fasi">
-      <h5><i class="fas fa-user personal"></i>Personal</h5>
-      <p  class="money">$2,200</p>
-     </div>
-     <div class="fasi">
-      <h5><i class="fas fa-car car" ></i>Transportation</h5>
-      <p class="money">$2,200</p>
-     </div>
+      <div class="column">
+        <h1 class="mainheader">Personal Finance Tracker</h1>
+        <h3 class="balance">Available Balance<h3>
+        <p class="money">$ 14,822</p>
       </div>
+     <h3 class="h"><i class="fa-solid fa-chart-line"></i>Dashboard</h3>
+     <h4 class="h">Saturday August,10 2024</h4>
+     <div class="profile">
+      <div>
+      <h3>Michael James</h3>
+      <h6>Programming</h6>
+    </div>
+    <div class="logo">
+      <img src="./images/profile-1.jpg" alt="logo"/>
+      <span>Finances</span>
+  </div>
+
+     </div>
+   </div>
+   
+   <div class="ddiv">
+   <div class="row">
+    <div class="section">
+    <div class="sections">
       <div class="row">
-        <div class="goals">
-          <p>61%</p>
-          <h4>Income Goals</h4>
-          <p>Progress for months</p>
+      <div class="net">
+          <h3>Total Net Worth</h3>
+          <p> $278,378</p>
+      </div>
+  
+      <div class="source">
+        <h6>Income Source</h6>
+        <div id="chart_div" style="width: 300px; height: 180px; background:  #101e32;"></div> 
+      </div>
+       </div>
+       <div class="row">
+          <div class="spendings">
+              <h4>spendings</h4>
+             
+              <p> $9,228</p>
+          </div>
+          <div class="spendings">
+              <h4>Income</h4>
+              <p> $24, 050</p>
+              <div id="line_top_x" style="width: 150px; height: 130px; background: transparent;"></div>
+             
+          </div>
+           </div>
+      <div class="row rowspen">
+       <h4 class="spen">Spendings</h4>
+       <div class="fasi">
+        <h5><i class="fas fa-home house"></i>Housing</h5>
+        <p  class="money">$3,456</p>
+       </div>
+       <div class="fasi">
+        <h5><i class="fas fa-user personal"></i>Personal</h5>
+        <p  class="money">$2,200</p>
+       </div>
+       <div class="fasi">
+        <h5><i class="fas fa-car car" ></i>Transportation</h5>
+        <p class="money">$2,200</p>
+       </div>
+        </div>
 
+      
+     
+     </div>
+     <div class="sections">
+      <div class="graph-container">
+        <canvas id="myChart" style="width: 500px; height: 200px;"></canvas>></canvas>
+    </div>
+  
+    <div class="donut">
+      <div id="donutchart" style="width: 350px; height: 250px;" ></div>
+    </div>
+     </div>
+    </div>
+  </div>
+  
+    <div class="row row2">
+      <div class="goals">
+        <p>61%</p>
+        <h4>Income Goals</h4>
+        <p>Progress for months</p>
+      
+        <div class="cylinder-container">
+          <div class="cylinder">
+            <div class="fill" style="width: 61%;"></div>
+          </div>
+          <span class="percentage">61%</span>
         </div>
       </div>
-   </div>
+      <div class="notification">
+        <h4>Notification/h4>
+        <p>3 bills are past Due. Pay soon to avoid late fees</p>
+         <div class="expense">
+          <p>Expenses formy pages and cases</p>
+          <div class="listexpense">
+            <ul>
+              <li>140&nbsp;&nbsp;&nbspRoutine Vet</li>
+              <li> 950&nbsp;&nbsp;&nbspFood</li>
+              <li>231&nbsp;&nbsp;&nbspFood Treats</li>
+              <li>650&nbsp;&nbsp;&nbspKenelBoarding</li>
+            </ul>
+            
+          </div>
+         </div>
+        
+      </div>
+    </div>
 
-   <div class="sections">
-    <div class="graph-container">
-      <canvas id="myChart" style="width: 500px; height: 200px;"></canvas>></canvas>
+   
   </div>
-
-  <div class="donut">
-    <div id="donutchart" style="width: 350px; height: 250px;" ></div>
-  </div>
-   </div>
-
+  
    </div>
 
     </div>
@@ -315,6 +365,20 @@ function drawChart() {
         });
       });
       </script>
+      <script>
+        function updateProgress(percent) {
+          const fill = document.querySelector('.fill');
+          const percentageSpan = document.querySelector('.percentage');
+          
+          fill.style.width = percent + '%';
+          percentageSpan.textContent = percent + '%';
+        }
+        
+        // Example usage:
+        
+        updateProgress(75)// updateProgress(75); // This would update the progress to 75%
+        </script>
 
 </body>
 </html>
+
