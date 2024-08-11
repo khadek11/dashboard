@@ -87,12 +87,13 @@ nav{
 .headers{
    position: sticky;
    display: flex;
-   gap:50px;
+   gap:20px;
    padding: 20px;
+   color: #0ef;
 }
 .mainheader{
     font-size: 18px;
-    color: whitesmoke;
+  
     margin-bottom: 1px;
     font-weight: 500;
    
@@ -127,7 +128,7 @@ nav{
 }
 .sections{
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 .source{
     background: #101e32;
@@ -143,7 +144,7 @@ nav{
 .row{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   
 }
 .spendings{
@@ -270,3 +271,52 @@ nav{
     font-weight: bold;
     color: #333;
   }
+  .update a{
+    text-decoration: none; 
+  color: inherit; 
+  background-color: transparent; 
+  }
+  .input-form {
+    width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #101e32;
+    border-radius: 10px;
+}
+
+.input-form h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-form label {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.input-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+.input-form button {
+    padding: 10px;
+    background-color: #0ef;
+    color: #101e32;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.input-form button:hover {
+    background-color: #0cd;
+}

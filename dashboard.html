@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Finance Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js"></script>
     <link rel="stylesheet" href="styledash.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-    <script src="https://code.highcharts.com/dashboards/dashboards.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <script src="https://code.highcharts.com/dashboards/dashboards.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="dash.js"></script>
     <script type="text/javascript">
    google.charts.load('current', {'packages':['line', 'corechart']});
   google.charts.setOnLoadCallback(function() {
@@ -161,28 +163,30 @@ function drawChart() {
     </script>
      <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Asset', 'Percentage'],
-          ['Warehouse',     11],
-          ['Land',      2],
-          ['Cars',  2],
-          ['Gold', 2],
-          ['Stock',    7]
-        ]);
+google.charts.setOnLoadCallback(drawDonutChart);
 
-        var options = {
-          title: 'Assets',
-          pieHole: 0.4,
-          backgroundColor: 'transparent',
-          color: '#fff',
-        };
+function drawDonutChart() {
+  var data = google.visualization.arrayToDataTable([
+    ['Asset', 'Percentage'],
+    ['Warehouse',     11],
+    ['Land',      2],
+    ['Cars',  2],
+    ['Gold', 2],
+    ['Stock',    7]
+  ]);
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
+  var options = {
+    title: 'Assets',
+    pieHole: 0.4,
+    backgroundColor: 'transparent',
+    color: '#fff',
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+  chart.draw(data, options);
+}
     </script>
+      <script src="dash.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -192,10 +196,10 @@ function drawChart() {
                 <img src="./images/logo.png" alt="logo"/>
                 <span>Finances</span>
             </div>
-            <a href="#"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
+            <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
             <a href="income.html"><i class="fa-solid fa-star"></i>Income</a>
             <a href="#"><i class="fa-solid fa-star"></i>Expense</a>
-            <a href="#"><i class="fa-solid fa-calendar-days"></i> Budget</a>
+            <a href="form.html"><i class="fa-solid fa-calendar-days"></i> Update Form</a>
             <a href="#"><i class="fa-solid fa-list-check"></i>Recommendations</a>
             <a href="savings.html"><i class="fa-solid fa-spinner"></i>Savings</a>
             <a href="" class="logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
@@ -207,10 +211,12 @@ function drawChart() {
       <div class="column">
         <h1 class="mainheader">Personal Finance Tracker</h1>
         <h3 class="balance">Available Balance<h3>
-        <p class="money">$ 14,822</p>
+          <div id="balanceAmount">$ 14,822</div>
       </div>
      <h3 class="h"><i class="fa-solid fa-chart-line"></i>Dashboard</h3>
      <h4 class="h">Saturday August,10 2024</h4>
+     <h3 class="update h"><a href="form.html"> Update</a></h3>
+     <h3 class="update h"><a href="login.html"> Login</a></h3>
      <div class="profile">
       <div>
       <h3>Michael James</h3>
@@ -231,7 +237,7 @@ function drawChart() {
       <div class="row">
       <div class="net">
           <h3>Total Net Worth</h3>
-          <p> $278,378</p>
+          <div id="netWorthValue">$278,378</div>
       </div>
   
       <div class="source">
@@ -243,11 +249,11 @@ function drawChart() {
           <div class="spendings">
               <h4>spendings</h4>
              
-              <p> $9,228</p>
+              <div id="spendingsValue">$9,228</div>
           </div>
           <div class="spendings">
               <h4>Income</h4>
-              <p> $24, 050</p>
+              <div id="incomeValue">$24,050</div>
               <div id="line_top_x" style="width: 150px; height: 130px; background: transparent;"></div>
              
           </div>
@@ -273,7 +279,7 @@ function drawChart() {
      </div>
      <div class="sections">
       <div class="graph-container">
-        <canvas id="myChart" style="width: 500px; height: 200px;"></canvas>></canvas>
+        <canvas id="myChart" style="width: 500px; height: 200px;"></canvas>
     </div>
   
     <div class="donut">

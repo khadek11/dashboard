@@ -32,60 +32,99 @@
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income vs Expenses Graph</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+(function() {
+    if (window.financeDashboardExecuted) {
+        console.log('Finance dashboard script already executed, skipping');
+        return;
+    }
+    window.financeDashboardExecuted = true;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+        initializeCharts();
+        initializeDonutChart();
+
+        const form = document.getElementById('financialForm');
+        if (form) {
+            form.addEventListener('submit', handleFormSubmit);
+        }
+    });
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+        
+        for (let key in data) {
+            data[key] = parseFloat(data[key]) || 0;
         }
         
-    </style>
-</head>
-<body>
-  
-</body>
-</html>
+        localStorage.setItem('financialData', JSON.stringify(data));
+        loadData();
+        updateCharts(data);
+        
+        // Optionally redirect to dashboard
+        // window.location.href = 'dashboard.html';
+    }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Income vs Expenses Graph</title>
- 
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .graph-container {
-            width: 80%;
-            max-width: 600px;
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body>
-    <div class="graph-container">
-        <canvas id="myChart"></canvas>
-    </div>
+    function loadData() {
+        const data = JSON.parse(localStorage.getItem('financialData') || '{}');
+        updateDashboardElements(data);
+        updateCharts(data);
+    }
 
-   
-</body>
-</html>
+    function updateDashboardElements(data) {
+        const elements = {
+            balanceAmount: data.monthlyIncome,
+            netWorthValue: data.netWorth,
+            spendingsValue: data.monthlyExpenses,
+            incomeValue: data.monthlyIncome
+        };
+
+        for (let [id, value] of Object.entries(elements)) {
+            const element = document.getElementById(id);
+            if (element) element.textContent = `$${parseFloat(value || 0).toFixed(2)}`;
+        }
+    }
+
+    function initializeCharts() {
+        // ... (keep the existing code)
+    }
+
+    function updateCharts(data) {
+        // ... (keep the existing code)
+    }
+
+    function initializeDonutChart() {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(function() {
+            updateDonutChart({});
+        });
+    }
+
+    function updateDonutChart(data) {
+        const donutChart = document.getElementById('donutchart');
+        if (donutChart && google.visualization) {
+            const income = parseFloat(data.monthlyIncome || 0);
+            const expenses = parseFloat(data.monthlyExpenses || 0);
+            const savings = parseFloat(data.monthlySavings || 0);
+
+            var chartData = google.visualization.arrayToDataTable([
+                ['Category', 'Amount'],
+                ['Income', income],
+                ['Expenses', expenses],
+                ['Savings', savings]
+            ]);
+
+            var options = {
+                pieHole: 0.4,
+                backgroundColor: 'transparent',
+                colors: ['#4CAF50', '#FF5722', '#2196F3'],
+                legend: 'none'
+            };
+
+            var chart = new google.visualization.PieChart(donutChart);
+            chart.draw(chartData, options);
+        }
+    }
+})();
